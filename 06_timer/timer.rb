@@ -12,16 +12,9 @@ class Timer
   	return "#{hour}:#{min}:#{sec}"
   end
 
-  def padded(num)
-  	string = ""
-  	if num == 0
-  		string = "00"
-  	elsif num < 10 
-  		string = "0" + num.to_s
-  	else
-  		string = num.to_s
-	end
-  	return string
+  def padded(num) 	
+  	return "0#{num}" if num < 10
+  	return num.to_s
   end
 
 end
