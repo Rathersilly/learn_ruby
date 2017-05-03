@@ -1,33 +1,39 @@
 #write your code here
 def translate(string)
-	#check if starts with nonvowel
-	 words = string.split(" ")
-	 newwords = []
-	 words.each do |word|
-
-
+	
 	 vowels = %w[a e i o u]
-	 puts word
-	 puts word[0]
-	 newword = word
 	 
- 	i = 0
-	while !vowels.include?(word[i]) do
-	 	newword = word[i+1 ..word.length] + word[0..i]
-	 	i += 1
-	 	
-
-	 	puts newword
-	 end
-
+	words = string.split(" ")
+	
+	newsentence = []
+	words.each do |w|
+		i = 0
+		newword = ""
+		while !vowels.include?(w[i]) do
 
 
-	 
 
-	newword = newword + "ay"
-	puts newword
-	return newword
+		 	newword = w[i+1 ..w.length] + w[0..i]
+		 	
+		 	if w[i..i+1] == "qu"
+		 		newword = w[i+2 ..w.length] + w[0..i+1]
+		 	end
+		 	i += 1
+
+
+		 
+	 		
+	 	end
+	 	newword = w if i == 0 
+	 	newword = newword + "ay"
+	 	newsentence.push(newword)
+	end
+	
+	newsentence = newsentence.join(" ")
+	puts newsentence
+	puts newsentence.inspect
+	return newsentence
 end
 
 translate("apple")
-translate("cherry")
+translate("cherry pie")
